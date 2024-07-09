@@ -1,9 +1,9 @@
 import threading
 import time
-from config import tests, tests_lock
+from common import tests, tests_lock
 
 def test_worker(test_id, duration):
-    time.sleep(duration)  # Simulate a long-running test
+    time.sleep(duration)
     with tests_lock:
         if test_id in tests:
             tests[test_id]['status'] = 'completed'

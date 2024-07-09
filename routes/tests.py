@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 import uuid
 import time
 from models import Test
-from config import tests, tests_lock
+from common import tests, tests_lock
 from services.test_worker import start_test_worker
 
 tests_blueprint = Blueprint('tests', __name__)
