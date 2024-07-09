@@ -2,6 +2,13 @@
 
 Simple Flask is a Python library for dealing with frontend support.
 
+## Pre reqs
+
+```bash
+sudo apt install python3
+sudo apt install pip3
+```
+
 ## Installation
 
 Use the setup.sh script to install.
