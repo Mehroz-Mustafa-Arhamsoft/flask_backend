@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO 
+# TODO pip3 freeze > requirements.txt
 # Add Error Checking
 # Add return codes
 # Add code to check if python installed version is greater than 3.10
