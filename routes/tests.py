@@ -15,7 +15,7 @@ def trigger_test():
     expected_ending = timestamp_started + 3600
     
     test = Test(
-        test_id=test_id,
+        test_id=data["test_id"],
         timestamp_started=timestamp_started,
         expected_ending=expected_ending,
         test_type=data["test_type"],
