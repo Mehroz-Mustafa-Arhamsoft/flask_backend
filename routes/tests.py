@@ -18,17 +18,17 @@ def trigger_test():
         test_id=test_id,
         timestamp_started=timestamp_started,
         expected_ending=expected_ending,
-        test_type=data["testType"],
-        target_ip=data["targetIp"],
-        port_range=data["portRange"],
+        test_type=data["test_type"],
+        target_ip=data["target_ip"],
+        port_range=data["port_range"],
         status="in_progress"
     )
     
     with tests_lock:
         tests[test_id] = test.to_dict()
     
-    duration = 10
-    start_test_worker(test_id, duration)
+    duration = 60                            
+    start_test_worker(test_id, duration)    # ToDo - Simulating Work - Remove After implementing real work needed
     
     return jsonify(test.to_dict())
 
@@ -60,8 +60,8 @@ def get_result():
                 "timestampStarted": test["timestampStarted"],
                 "expectedEnding": test["expectedEnding"],
                 "type": test["type"],
-                "targetIp": test["targetIp"],
-                "portRange": test["portRange"],
+                "target_ip": test["target_ip"],
+                "port_range": test["port_range"],
                 "result": "This is a placeholder result"
             }
             
