@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Penetration Testing Tool</title>
+</head>
+<body>
+    <h1>Penetration Testing Tool</h1>
+    <form id="testForm">
+        <label for="tool">Select Tool:</label>
+        <select id="tool" name="tool">
+            <option value="nmap">Nmap</option>
+            <option value="nikto">Nikto</option>
+            <option value="wpscan">WPScan</option>
+            <option value="sqlmap">SQLMap</option>
+            <option value="zapcli">ZAP-CLI</option>
+        </select>
+        <br>
+        <label for="target">Target:</label>
+        <input type="text" id="target" name="target" required>
+        <br>
+        <button type="submit">Run Test</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/run_test', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').textContent = data.output || data.error;
+            });
+        });
+    </script>
+</body>
+</html>
