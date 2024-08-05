@@ -7,6 +7,16 @@ from utils.command_mapper import map_scan_type_to_command
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
+def map_scan_type_to_command(scan_type, target_ip, port_range):
+    commands = {
+        'sql': f'sqlmap -u {target_ip}',
+        'http': f'wpscan --url {target_ip}',
+        'vuln': f'zap-cli quick-scan --start {target_ip}',
+        'portScan': f'nmap -p {port_range} {target_ip}'
+    }
+    return commands.get(scan_type.lower(), None)
+
+
 def execute_test(test_id, scan_type, target_ip, port_range):
     try:
         command = map_scan_type_to_command(scan_type, target_ip, port_range)
